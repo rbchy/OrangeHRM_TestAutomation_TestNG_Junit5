@@ -2,7 +2,8 @@
 
 AI-enhanced QA automation framework for a Human Resource Management (HRM) and Payroll system, built around the public [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/) plus a locally-stubbed payroll/tax/insurance backend. Covers UI, API, integration, end-to-end, data-driven, and unit-level testing across payroll, federal/state tax, 401(k), overtime, and insurance domains.
 
-**Tester:** RB Chowdhury
+**Tester:** Ranajit B Chowdhury
+**QA Automation Engineer & SDET
 
 [![GitHub](https://img.shields.io/badge/GitHub-your--github--username-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-github-username)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-your--linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-linkedin)
@@ -70,7 +71,11 @@ Rather than shallow coverage everywhere, a few payroll rules are modeled with re
 
 ### PIM & Leave coverage
 
-`PimEmployeeValidationTest` and `LeaveApplicationTest` run against the real OrangeHRM demo (these modules genuinely exist there, unlike the payroll/tax backend). Their Page Object locators (`PimAddEmployeePage`, `LeaveApplyPage`) are based on OrangeHRM's documented DOM structure rather than a fresh live inspection - verify against the live app if a locator drifts. Both write real records to the shared public demo with no UI-based cleanup, and run in their own sequential, isolated TestNG `<test>` block for that reason. **Time** (timesheet edit-lock) and **My Info** (self-service field RBAC) were deliberately left out of this phase - both require a second, non-admin demo account and a supervisor workflow state that isn't available on the public single-login demo. See `TEST_STRATEGY.md` for the full reasoning.
+`PimEmployeeValidationTest` and `LeaveApplicationTest` run against the real OrangeHRM demo (these modules genuinely exist there, unlike the payroll/tax backend). Page Object locators (`PimAddEmployeePage`, `LeaveApplyPage`, `LeaveEntitlementPage`) were iteratively verified against the live app rather than trusted from documentation alone - several real bugs only surfaced that way, including an XPath that ambiguously matched the "Entitlements" nav tab instead of the intended form field, and a visually-hidden (`opacity: 0`) radio input that a looser locator was silently landing on instead of the real target.
+
+The Leave suite grants its own leave entitlement via the UI (`LeaveEntitlementPage`) immediately before applying for leave, in the same browser session - the shared public demo assigns a different, randomly-generated employee identity to every fresh Admin login, so entitlement setup and the Apply Leave attempt have to happen in the same session to apply to the same employee. The PIM suite generates its own unique Employee Id per run rather than trusting the form's auto-suggested one, since heavy reuse of this shared demo means the suggested Id can itself already be taken.
+
+Both suites write real records to the shared public demo with no UI-based cleanup, and run in their own sequential, isolated TestNG `<test>` block for that reason. **Time** (timesheet edit-lock) and **My Info** (self-service field RBAC) were deliberately left out of this phase - both require a second, non-admin demo account and a supervisor workflow state that isn't available on the public single-login demo. See `TEST_STRATEGY.md` for the full reasoning.
 
 ---
 
