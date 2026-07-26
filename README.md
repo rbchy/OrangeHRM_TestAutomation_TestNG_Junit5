@@ -6,8 +6,8 @@ AI-enhanced QA automation framework for a Human Resource Management (HRM) and Pa
 Ranajit B Chowdhury
 QA Automation Engineer & SDET
 
-[![GitHub](https://img.shields.io/badge/GitHub-your--github--username-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-your--linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-linkedin)
+[![GitHub](https://img.shields.io/badge/rbchy-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
+[![LinkedIn](https://img.shields.io/badge/rbchy-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rbchy)
 
 [![CI](https://github.com/your-github-username/hrm-payroll-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/your-github-username/hrm-payroll-automation/actions/workflows/ci.yml)
 
