@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InsuranceBenefitsResponse",
+  "type": "object",
+  "required": ["employeeId", "planTier", "dependents", "monthlyPremium", "status"],
+  "properties": {
+    "employeeId": { "type": "string" },
+    "planTier": { "type": "string", "enum": ["INDIVIDUAL", "FAMILY"] },
+    "dependents": { "type": "integer", "minimum": 0 },
+    "monthlyPremium": { "type": "number", "minimum": 0 },
+    "status": { "type": "string", "enum": ["ACTIVE", "PENDING", "CANCELLED"] }
+  }
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="HRM Payroll Automation Suite" parallel="methods" thread-count="4" verbose="2">
+
+    <!-- Global Suite Parameters -->
+    <parameter name="environment" value="QA" />
+    <parameter name="browser" value="chrome" />
+
+    <!-- Application Listeners for Reports (e.g., Allure or ExtentReports) -->
+    <!-- 
+    <listeners>
+        <listener class-name="org.testng.reporters.SuiteHTMLReporter" />
+    </listeners>
+    -->
+
+    <!-- Test Suite 1: Web UI Functional & Regression Core -->
+    <test name="HRM Core UI and Payroll Validation">
+        <!-- Execution groups mapped from the QA Test Architecture Matrix -->
+        <groups>
+            <run>
+                <include name="Smoke" />
+                <include name="Regression" />
+                <include name="Negative" />
+                <exclude name="Flaky" />
+            </run>
+        </groups>
+        
+        <classes>
+            <!-- Add your core Web UI and Validation Test classes here -->
+            <class name="tests.TimeClockNegativeTest" />
+            <class name="tests.MultiStateTaxTest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 2: RestAssured API Relay Integration Engine -->
+    <test name="Payroll Tax and Insurance API Relays" parallel="false">
+        <classes>
+            <!-- Dedicated API validation layer (run sequentially to protect state) -->
+            <class name="tests.TaxInsuranceApiTest" />
+            <class name="tests.InsuranceApiTest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 3a: Sanity Testing.
+         Narrow, fast checks meant to run right after a targeted bug fix -
+         not a full regression pass. -->
+    <test name="Payroll Sanity Checks" parallel="false">
+        <classes>
+            <class name="tests.PayStubSanityTest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 3b: Integration Testing.
+         Verifies the data hand-off between the Time Clock and Payroll
+         modules stays correctly formatted. -->
+    <test name="Time Clock to Payroll Integration" parallel="false">
+        <classes>
+            <class name="tests.TimeClockPayrollIntegrationTest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 3c: End-to-End Testing.
+         One continuous pay-cycle chain: punch -> manager approval ->
+         tax/deduction calculation -> direct deposit trigger. -->
+    <test name="End-to-End Payroll Cycle" parallel="false">
+        <classes>
+            <class name="tests.PayrollE2ETest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 3d: PIM & Leave Functional Validation.
+         Positive/Negative UI coverage against the real OrangeHRM demo (these
+         modules genuinely exist there). Run sequentially and isolated from
+         the other suites since they write real records to a shared public
+         demo instance with no UI-based cleanup - see TEST_STRATEGY.md. -->
+    <test name="PIM and Leave Functional Validation" parallel="false">
+        <classes>
+            <class name="tests.PimEmployeeValidationTest" />
+            <class name="tests.LeaveApplicationTest" />
+        </classes>
+    </test>
+
+    <!-- Test Suite 4: Cucumber BDD Login Smoke Suite.
+         TestRunner filters to @Smoke scenarios only (see @CucumberOptions),
+         so this currently runs Login.feature against the public OrangeHRM
+         demo site. Authentication.feature has no step definitions yet and is
+         untagged, so it's excluded automatically. -->
+    <test name="Cucumber BDD Login Smoke Suite" parallel="false">
+        <classes>
+            <class name="runner.TestRunner" />
+        </classes>
+    </test>
+
+</suite>

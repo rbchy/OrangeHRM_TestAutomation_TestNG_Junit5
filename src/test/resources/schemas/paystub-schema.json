@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PayStubDownloadResponse",
+  "type": "object",
+  "required": ["employeeId", "payPeriod", "downloadUrl", "status"],
+  "properties": {
+    "employeeId": { "type": "string" },
+    "payPeriod": { "type": "string" },
+    "downloadUrl": { "type": "string", "format": "uri" },
+    "status": { "type": "string", "enum": ["READY", "PROCESSING", "FAILED"] }
+  }
+}

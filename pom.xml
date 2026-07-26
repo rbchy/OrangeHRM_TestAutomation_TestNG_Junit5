@@ -1,0 +1,223 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.aiage.qa</groupId>
+  <artifactId>hrm-payroll-automation</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>hrm-payroll-automation</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <selenium.version>4.22.0</selenium.version>
+    <testng.version>7.10.2</testng.version>
+    <cucumber.version>7.18.0</cucumber.version>
+    <restassured.version>5.4.0</restassured.version>
+    <poi.version>5.2.5</poi.version>
+    <allure.version>2.35.3</allure.version>
+    <wiremock.version>3.13.2</wiremock.version>
+    <junit.version>5.14.4</junit.version>
+    <junit-platform.version>1.14.4</junit-platform.version>
+    <mockito.version>5.23.0</mockito.version>
+  </properties>
+
+  <dependencies>
+    <!-- TestNG Execution Engine (Replaces JUnit 3.8.1) -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Selenium WebDriver for UI Automation -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+    <!-- RestAssured for Payroll & Deductions API Testing -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${restassured.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Cucumber BDD Core Dependencies -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Apache POI for Multi-State Data-Driven Testing Matrices -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+
+    <!-- Appium Java Client for Mobile Self-Service Testing -->
+    <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>9.2.3</version>
+    </dependency>
+
+    <!-- Allure for @Step / @Description reporting annotations (TestNG suites) -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Allure adapter for the Cucumber runner (TestRunner's AllureCucumber7Jvm plugin) -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- WireMock: stubs the payroll-deductions API locally so API contract tests
+         don't depend on an external/unresolvable host -->
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock-standalone</artifactId>
+      <version>${wiremock.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 5 + Mockito for true unit-level tests (payroll math, hour
+         validation) run in isolation from Selenium/RestAssured/TestNG -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>${junit-platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Allure adapter for the JUnit 5 unit tests (src/test/java/unit/**).
+         Without this, only the TestNG suite shows up in the Allure report -
+         JUnit 5 results never get written to target/allure-results.
+         Registers itself automatically via a JUnit Platform
+         TestExecutionListener (ServiceLoader), same mechanism as
+         allure-testng below - no extra wiring needed. -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-junit5</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JSON schema validation for API contract tests (pay-stub / insurance
+         endpoints) -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>${restassured.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Maven Surefire Plugin: runs the JUnit 5 unit tests
+           (src/test/java/unit/**) during the normal `mvn test` phase.
+           Fast, isolated business-logic tests only - no
+           Selenium/RestAssured/TestNG involved. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <includes>
+            <include>**/unit/**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Failsafe Plugin: runs the TestNG suite (UI, API,
+           Integration, E2E, Cucumber - everything wired up in testng.xml)
+           during `mvn verify` / `mvn integration-test`.
+           Deliberately a *separate plugin* from Surefire above: now that
+           both JUnit 5 (junit-platform-launcher) and TestNG are on the test
+           classpath, provider auto-detection between the two plugins would
+           be ambiguous. The explicit surefire-testng provider dependency
+           below forces this plugin's execution to always use the TestNG
+           provider regardless of what else is on the classpath. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>3.2.5</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-testng</artifactId>
+            <version>3.2.5</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <suiteXmlFiles>
+                <suiteXmlFile>testng.xml</suiteXmlFile>
+              </suiteXmlFiles>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Generates a browsable Allure HTML report from target/allure-results.
+           Run `mvn clean verify` first (runs both the JUnit 5 unit tests and
+           the TestNG suite), then `mvn allure:report` (output in
+           target/site/allure-maven-plugin/index.html) or `mvn allure:serve`
+           to open it straight in the browser.
+           Pinned to the Allure 2 (Java-based) runtime via reportVersion:
+           the plugin's default Allure 3 (Node-based) runtime has a known
+           path-resolution bug that makes `allure:serve` fail with
+           "No test results directories found" on some setups. Allure 2 is
+           also the native match for the allure-testng/allure-cucumber7-jvm
+           2.x adapters used in this project. -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <reportVersion>2.44.0</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
