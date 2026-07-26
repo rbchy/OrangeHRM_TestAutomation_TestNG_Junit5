@@ -2,9 +2,8 @@
 
 AI-enhanced QA automation framework for a Human Resource Management (HRM) and Payroll system, built around the public [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/) plus a locally-stubbed payroll/tax/insurance backend. Covers UI, API, integration, end-to-end, data-driven, and unit-level testing across payroll, federal/state tax, 401(k), overtime, and insurance domains.
 
-**Tester:** 
-Ranajit B Chowdhury
-QA Automation Engineer & SDET
+**Ranajit B Chowdhury, QA Automation Engineer & Full Stack Developer** | Test Automation Specialist  
+**Remote-Ready Professional** | Playwright · Selenium · Cucumber · BDD · Java · Python · TypeScript
 
 [![GitHub](https://img.shields.io/badge/rbchy-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
 [![LinkedIn](https://img.shields.io/badge/rbchy-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rbchy)
