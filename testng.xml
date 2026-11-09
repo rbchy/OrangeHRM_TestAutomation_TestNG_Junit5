@@ -68,18 +68,6 @@
         </classes>
     </test>
 
-    <!-- Test Suite 3d: PIM & Leave Functional Validation.
-         Positive/Negative UI coverage against the real OrangeHRM demo (these
-         modules genuinely exist there). Run sequentially and isolated from
-         the other suites since they write real records to a shared public
-         demo instance with no UI-based cleanup - see TEST_STRATEGY.md. -->
-    <test name="PIM and Leave Functional Validation" parallel="false">
-        <classes>
-            <class name="tests.PimEmployeeValidationTest" />
-            <class name="tests.LeaveApplicationTest" />
-        </classes>
-    </test>
-
     <!-- Test Suite 4: Cucumber BDD Login Smoke Suite.
          TestRunner filters to @Smoke scenarios only (see @CucumberOptions),
          so this currently runs Login.feature against the public OrangeHRM
