@@ -37,6 +37,8 @@ Roughly 2.7 unit tests for every system-level test. This is intentional, not inc
 
 ## 3. Test type coverage
 
+> **Repository note (Nov 2026):** the PIM / Leave page objects and tests described below (`pages/*Page.java`, `PimEmployeeValidationTest`, `LeaveApplicationTest`) reached GitHub as empty files and were removed; `LeaveEntitlementPage` was never committed. Everything else in this table is in the repository and runs in CI.
+
 | Category | Approach | Where |
 |---|---|---|
 | Smoke | Cucumber `@Smoke` login flow, real OrangeHRM demo | `stepDefinitions/LoginSteps.java` |

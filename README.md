@@ -1,139 +1,247 @@
-# OrangeHRM Payroll Automation
+<div align="center">
 
-AI-enhanced QA automation framework for a Human Resource Management (HRM) and Payroll system, built around the public [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/) plus a locally-stubbed payroll/tax/insurance backend. Covers UI, API, integration, end-to-end, data-driven, and unit-level testing across payroll, federal/state tax, 401(k), overtime, and insurance domains.
+# 🧾 OrangeHRM Payroll Automation
 
-**Ranajit B Chowdhury, QA Automation Engineer & Full Stack Developer** | Test Automation Specialist  
-**Remote-Ready Professional** | Playwright · Selenium · Cucumber · BDD · Java · Python · TypeScript
+### HRM + payroll test framework — JUnit 5 unit tests, TestNG API / integration / E2E, Cucumber UI on the OrangeHRM demo
 
-[![GitHub](https://img.shields.io/badge/rbchy-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
-[![LinkedIn](https://img.shields.io/badge/rbchy-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rbchy)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=18&pause=1500&color=FFC107&center=true&vCenter=true&width=900&repeat=true&lines=JUnit+5+%C2%B7+Mockito+%C2%B7+TestNG+%C2%B7+REST+Assured+%C2%B7+WireMock+%C2%B7+Cucumber;2026+IRS+tax+brackets+%C2%B7+401(k)+limits+%C2%B7+FLSA+overtime;66+%2F+66+tests+passing+in+GitHub+Actions)](https://git.io/typing-svg)
 
-[![CI](https://github.com/your-github-username/hrm-payroll-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/your-github-username/hrm-payroll-automation/actions/workflows/ci.yml)
+<!-- ============ STATUS BAR ============ -->
+[![CI](https://github.com/rbchy/OrangeHRM_TestAutomation_TestNG_Junit5/actions/workflows/ci.yml/badge.svg)](https://github.com/rbchy/OrangeHRM_TestAutomation_TestNG_Junit5/actions/workflows/ci.yml)
+![Tests](https://img.shields.io/badge/Tests-66%20%2F%2066%20passing-22c55e?style=for-the-badge&logo=checkmarx&logoColor=white)
+![Domain](https://img.shields.io/badge/Domain-HRM%20%C2%B7%20Payroll%20%C2%B7%20Tax-155e75?style=for-the-badge)
+![Target](https://img.shields.io/badge/UI-OrangeHRM%20demo-1e3a8a?style=for-the-badge&logo=googlechrome&logoColor=white)
 
----
+![Java](https://img.shields.io/badge/Java-11%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JUnit 5](https://img.shields.io/badge/JUnit-5.14-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+![Mockito](https://img.shields.io/badge/Mockito-5.23-78C257?style=for-the-badge)
+![TestNG](https://img.shields.io/badge/TestNG-7.10-FF7F00?style=for-the-badge)
+![REST Assured](https://img.shields.io/badge/REST%20Assured-5.4-3A5FCD?style=for-the-badge)
+![WireMock](https://img.shields.io/badge/WireMock-3.13-3D3D3D?style=for-the-badge)
+![Selenium](https://img.shields.io/badge/Selenium-4.22-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Cucumber](https://img.shields.io/badge/Cucumber-7.18-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
+![Apache POI](https://img.shields.io/badge/Apache%20POI-5.2-D22128?style=for-the-badge&logo=apache&logoColor=white)
+![Allure](https://img.shields.io/badge/Allure-2.35-FF5A5F?style=for-the-badge)
 
-## Tools & Technologies
+![Last Commit](https://img.shields.io/github/last-commit/rbchy/OrangeHRM_TestAutomation_TestNG_Junit5?style=flat-square&color=0d9488&label=Last%20commit)
+[![Test Strategy](https://img.shields.io/badge/📘_Test_Strategy-1e3a8a?style=flat-square)](TEST_STRATEGY.md)
 
-<p>
-  <img src="https://img.shields.io/badge/Java-11-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 11" />
-  <img src="https://img.shields.io/badge/Maven-3.x-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" />
-  <img src="https://img.shields.io/badge/Selenium-4.22-43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium" />
-  <img src="https://img.shields.io/badge/TestNG-7.10-EF2D5E?style=for-the-badge&logo=testinglibrary&logoColor=white" alt="TestNG" />
-  <img src="https://img.shields.io/badge/Cucumber-7.18-23D96C?style=for-the-badge&logo=cucumber&logoColor=white" alt="Cucumber" />
-  <img src="https://img.shields.io/badge/REST_Assured-5.4-3A5FCD?style=for-the-badge&logo=swagger&logoColor=white" alt="REST Assured" />
-</p>
-<p>
-  <img src="https://img.shields.io/badge/JUnit_5-5.14-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit 5" />
-  <img src="https://img.shields.io/badge/Mockito-5.23-78C257?style=for-the-badge&logo=java&logoColor=white" alt="Mockito" />
-  <img src="https://img.shields.io/badge/WireMock-3.13-3D3D3D?style=for-the-badge&logo=wire&logoColor=white" alt="WireMock" />
-  <img src="https://img.shields.io/badge/Apache_POI-5.2-D22128?style=for-the-badge&logo=apache&logoColor=white" alt="Apache POI" />
-  <img src="https://img.shields.io/badge/Appium-9.2-662D91?style=for-the-badge&logo=appium&logoColor=white" alt="Appium" />
-  <img src="https://img.shields.io/badge/Apache_JMeter-5.6-D22128?style=for-the-badge&logo=apachejmeter&logoColor=white" alt="Apache JMeter" />
-</p>
-<p>
-  <img src="https://img.shields.io/badge/Allure_Report-2.35-FF5A5F?style=for-the-badge&logo=qameta&logoColor=white" alt="Allure Report" />
-  <img src="https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
-  <img src="https://img.shields.io/badge/JSON_Schema-Validator-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON Schema Validator" />
-</p>
+</div>
 
 ---
 
-## Test Architecture
+## 📌 At a Glance
 
-This project intentionally maps to a full QA test taxonomy rather than a single style of testing. Each category below is a deliberate design choice, not filler.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**🙋 What this is**
+
+A QA framework for a **Human Resource Management and Payroll** system, mapped to a full test taxonomy: unit, API, sanity, integration, end-to-end, data-driven and BDD UI. The UI side runs against the public **[OrangeHRM demo](https://opensource-demo.orangehrmlive.com/)**; the payroll, tax and insurance backend is **stubbed with WireMock**, so every API / integration / E2E test is deterministic.
+
+The payroll rules use **real 2026 regulatory figures** — IRS Publication 15-T brackets, 401(k) limits, FLSA overtime — rather than placeholders.
+
+> *Payroll bugs are paid in real money — the math gets unit tests, the hand-offs get integration tests.*
+
+</td>
+<td width="50%" valign="top">
+
+**📍 Quick facts**
+
+| | |
+|---|---|
+| ✅ **CI** | 66 / 66 on every push |
+| 🧮 **Unit** | 48 (JUnit 5 + Mockito) |
+| 🔗 **TestNG** | 17 (API · sanity · integration · E2E · data-driven) |
+| 🥒 **Cucumber** | 1 smoke login (OrangeHRM demo) |
+| 📊 **Data-driven** | 11-state tax matrix from `.xlsx` |
+| 📄 **Strategy** | [TEST_STRATEGY.md](TEST_STRATEGY.md) |
+
+</td>
+</tr>
+</table>
+
+---
+
+## ✅ Latest Results (GitHub Actions)
+
+| Layer | Runs under | Tests | Result |
+|---|---|---:|---|
+| 🧮 Unit — payroll, tax, 401(k), overtime, insurance, union dues, work hours | `mvn test` (Surefire, JUnit 5) | 48 | ![passed](https://img.shields.io/badge/-48%20passed-22c55e?style=flat-square) |
+| 🔗 TestNG suite — API, sanity, integration, E2E, multi-state tax + Cucumber smoke | `mvn verify` (Failsafe, `testng.xml`) | 18 | ![passed](https://img.shields.io/badge/-18%20passed-22c55e?style=flat-square) |
+| **Total** | | **66** | **100 %** |
+
+<sub>Every push runs `mvn clean verify` ([workflow](.github/workflows/ci.yml)) and uploads the Allure report and raw results. The same 66 / 66 appears in the local Allure exports in this repository ([overview](Allure%20Report%20overview.pdf), [suites](Allure%20Report%20suite.pdf), [behaviors](Allure%20Report%20Behavior.pdf), [packages](Allure%20Report%20Packages.pdf), [graphs](Allure%20Report%20graph.pdf)).</sub>
+
+<details>
+<summary><strong>Unit tests by class</strong></summary>
+
+<br>
+
+| Class | Tests | Rule under test |
+|---|---:|---|
+| `RetirementContributionCalculatorTest` | 10 | 2026 401(k) limits, catch-up / super catch-up, employer match |
+| `PayrollCalculatorTest` | 8 | Gross → net with deductions, invalid input |
+| `FederalTaxBracketCalculatorTest` | 8 | 2026 IRS Pub 15-T bracket table |
+| `OvertimeCalculatorTest` | 7 | FLSA 40-hour week, blended rate for multi-rate weeks |
+| `InsurancePremiumCalculatorTest` | 6 | Plan premiums, invalid plan |
+| `UnionDuesCalculatorTest` | 5 | Flat-fee and percentage-of-gross dues |
+| `WorkHoursValidatorTest` | 4 | Valid vs. invalid hours |
+
+</details>
+
+---
+
+## 🧪 Test Architecture
 
 | Category | How it's covered | Where |
 |---|---|---|
-| Smoke | Cucumber `@Smoke` login flow against the real OrangeHRM demo | `stepDefinitions/LoginSteps.java`, `features/Login.feature` |
-| Sanity | Fast, narrow post-bugfix check on a single endpoint | `tests/PayStubSanityTest.java` |
-| Regression | Multi-state tax matrix + API contract checks, run as one suite | `tests/MultiStateTaxTest.java`, `tests/TaxInsuranceApiTest.java`, `tests/InsuranceApiTest.java` |
-| Positive / Negative | Valid vs. invalid work-hours and payroll inputs | `unit/WorkHoursValidatorTest.java`, `unit/PayrollCalculatorTest.java` |
-| Unit | Payroll math, tax brackets, 401(k) limits, overtime - isolated with JUnit 5 + Mockito | `src/main/java/payroll/**`, `src/test/java/unit/**` |
-| Integration | Time-clock export -> payroll import data hand-off | `tests/TimeClockPayrollIntegrationTest.java` |
-| API | Response code + JSON schema validation on payroll/insurance endpoints | `tests/InsuranceApiTest.java`, `src/test/resources/schemas/` |
-| Functional / UI | Page Object Model - login/dashboard, PIM > Add Employee, Leave > Apply | `pages/LoginPage.java`, `pages/PimAddEmployeePage.java`, `pages/LeaveApplyPage.java` |
-| Positive / Negative (UI) | Valid employee add vs. missing required fields / duplicate Employee Id; valid leave request vs. overlapping request | `tests/PimEmployeeValidationTest.java`, `tests/LeaveApplicationTest.java` |
-| Mobile Automation | Appium scaffold for geofenced clock-in/out (template - no real app available) | `src/test/java/mobile/ClockInGeofenceMobileTest.java` |
-| End-to-End | Punch -> approval -> tax deduction -> direct deposit, one chained flow | `tests/PayrollE2ETest.java` |
-| Data-Driven | 11-state tax matrix read from an actual `.xlsx` via Apache POI | `src/test/resources/testdata/StateTaxMatrix.xlsx` |
-| Load & Performance | JMeter plan simulating 50,000 concurrent clock-outs (template - no real staging target yet) | `performance/PayrollClockOutLoadTest.jmx` |
+| 💨 Smoke | Cucumber `@Smoke` login against the real OrangeHRM demo | `features/Login.feature`, `stepDefinitions/LoginSteps.java` |
+| 🩺 Sanity | Fast, narrow post-fix check on one endpoint | `tests/PayStubSanityTest.java` |
+| 🔄 Regression | Multi-state tax matrix + API contract checks | `tests/MultiStateTaxTest.java`, `tests/TaxInsuranceApiTest.java`, `tests/InsuranceApiTest.java` |
+| ✅ / ❌ Positive & negative | Valid vs. invalid hours and payroll inputs | `unit/WorkHoursValidatorTest.java`, `unit/PayrollCalculatorTest.java` |
+| 🧮 Unit | Payroll math isolated with JUnit 5 + Mockito | `src/main/java/payroll/**`, `src/test/java/unit/**` |
+| 🔗 Integration | Time-clock export → payroll import hand-off | `tests/TimeClockPayrollIntegrationTest.java` |
+| 🔌 API | Status codes + JSON Schema validation (WireMock stubs) | `tests/InsuranceApiTest.java`, `src/test/resources/schemas/` |
+| 🚀 End-to-end | Punch → approval → tax deduction → direct deposit | `tests/PayrollE2ETest.java` |
+| 📊 Data-driven | 11-state tax matrix read from `.xlsx` with Apache POI | `src/test/resources/testdata/StateTaxMatrix.xlsx` |
+| 📱 Mobile (template) | Appium scaffold for geofenced clock-in, excluded from the build | `src/test/java/mobile/ClockInGeofenceMobileTest.java` |
+| ⚡ Load (template) | JMeter plan for 50,000 concurrent clock-outs | `performance/PayrollClockOutLoadTest.jmx` |
 
-All backend endpoints (payroll deductions, pay stubs, insurance, time clock, direct deposit) are stubbed locally with **WireMock** - there's no real payroll backend to point at, so every API/Integration/E2E test is deterministic and runs with zero external dependencies.
+```mermaid
+flowchart LR
+  subgraph U["mvn test — Surefire"]
+    J["JUnit 5 + Mockito<br/>48 unit tests"] --> PL["payroll/*<br/>tax · 401k · overtime"]
+  end
+  subgraph V["mvn verify — Failsafe + testng.xml"]
+    T["TestNG<br/>API · sanity · integration · E2E"] --> W["WireMock<br/>payroll / insurance stubs"]
+    T --> X["StateTaxMatrix.xlsx<br/>Apache POI"]
+    C["Cucumber @Smoke"] --> O["OrangeHRM demo<br/>(headless in CI)"]
+  end
+  U --> A["Allure report"]
+  V --> A
+```
 
-### Domain-depth additions
-
-Rather than shallow coverage everywhere, a few payroll rules are modeled with real regulatory figures instead of placeholders:
-
-- **Federal tax** - actual 2026 IRS Publication 15-T bracket table (`payroll/FederalTaxBracketCalculator.java`)
-- **401(k)** - real 2026 IRS annual contribution limits, standard/catch-up/super catch-up tiers, plus employer match (`payroll/RetirementContributionCalculator.java`)
-- **Overtime** - FLSA weekly (40hr) rule and the blended/weighted-average rate method for multi-rate weeks (`payroll/OvertimeCalculator.java`)
-- **Union dues** - flat-fee or percentage-of-gross deduction (`payroll/UnionDuesCalculator.java`)
-
-### PIM & Leave coverage
-
-`PimEmployeeValidationTest` and `LeaveApplicationTest` run against the real OrangeHRM demo (these modules genuinely exist there, unlike the payroll/tax backend). Page Object locators (`PimAddEmployeePage`, `LeaveApplyPage`, `LeaveEntitlementPage`) were iteratively verified against the live app rather than trusted from documentation alone - several real bugs only surfaced that way, including an XPath that ambiguously matched the "Entitlements" nav tab instead of the intended form field, and a visually-hidden (`opacity: 0`) radio input that a looser locator was silently landing on instead of the real target.
-
-The Leave suite grants its own leave entitlement via the UI (`LeaveEntitlementPage`) immediately before applying for leave, in the same browser session - the shared public demo assigns a different, randomly-generated employee identity to every fresh Admin login, so entitlement setup and the Apply Leave attempt have to happen in the same session to apply to the same employee. The PIM suite generates its own unique Employee Id per run rather than trusting the form's auto-suggested one, since heavy reuse of this shared demo means the suggested Id can itself already be taken.
-
-Both suites write real records to the shared public demo with no UI-based cleanup, and run in their own sequential, isolated TestNG `<test>` block for that reason. **Time** (timesheet edit-lock) and **My Info** (self-service field RBAC) were deliberately left out of this phase - both require a second, non-admin demo account and a supervisor workflow state that isn't available on the public single-login demo. See `TEST_STRATEGY.md` for the full reasoning.
+`mvn test` and `mvn verify` are split on purpose: JUnit 5 and TestNG share the classpath, so Surefire runs only the unit tests and Failsafe runs the TestNG suite with an explicit TestNG provider.
 
 ---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+| Area | Technology |
+|---|---|
+| Language / build | Java 11+ (CI: Temurin 17) · Maven |
+| Unit | JUnit 5.14 · Mockito 5.23 |
+| Suite runner | TestNG 7.10 (Failsafe) |
+| API | REST Assured 5.4 · JSON Schema Validator · WireMock 3.13 |
+| UI / BDD | Selenium 4.22 (Selenium Manager) · Cucumber 7.18 |
+| Data | Apache POI 5.2 (`.xlsx`) |
+| Mobile / load (templates) | Appium java-client · Apache JMeter |
+| Reporting | Allure 2.35 (JUnit 5, TestNG and Cucumber adapters) |
+| CI | GitHub Actions |
+
+---
+
+## ⚙️ Running the Suite
+
+**Prerequisites:** JDK 11+ · Maven 3.8+ · Google Chrome (for the Cucumber login)
+
+```bash
+git clone https://github.com/rbchy/OrangeHRM_TestAutomation_TestNG_Junit5.git
+cd OrangeHRM_TestAutomation_TestNG_Junit5
+
+mvn clean test          # 48 JUnit 5 unit tests only — seconds
+mvn clean verify        # unit tests + full TestNG suite + Cucumber smoke
+mvn allure:serve        # open the Allure report
+```
+
+Chrome runs headless automatically when `CI=true` (GitHub Actions sets it); locally it opens a visible window.
+
+---
+
+## 📁 Project Structure
 
 ```
-hrm-payroll-automation/
-├── .github/workflows/ci.yml        # GitHub Actions: build, test, Allure report
-├── performance/                    # JMeter load test plan (standalone, not part of mvn build)
-├── src/main/java/
-│   ├── pages/                      # Page Object Model (Selenium)
-│   └── payroll/                    # Payroll/tax/insurance business logic
+OrangeHRM_TestAutomation_TestNG_Junit5/
+├── .github/workflows/ci.yml          ← mvn verify + Allure on every push
+├── src/main/java/payroll/            ← tax, 401(k), overtime, insurance, union dues, validation
 ├── src/test/java/
-│   ├── stepDefinitions/            # Cucumber step definitions
-│   ├── runner/                     # Cucumber TestNG runner
-│   ├── tests/                      # TestNG: UI, API, Sanity, Integration, E2E
-│   ├── unit/                       # JUnit 5 + Mockito unit tests
-│   └── mobile/                     # Appium scaffold (excluded from the build)
+│   ├── unit/                         ← JUnit 5 + Mockito (Surefire)
+│   ├── tests/                        ← TestNG: API, sanity, integration, E2E, multi-state tax
+│   ├── stepDefinitions/LoginSteps.java
+│   ├── runner/TestRunner.java        ← Cucumber @Smoke
+│   └── mobile/                       ← Appium template (not built)
 ├── src/test/resources/
-│   ├── features/                   # Cucumber .feature files
-│   ├── schemas/                    # JSON schemas for API contract tests
-│   └── testdata/                   # Data-driven test fixtures (.xlsx)
-├── testng.xml                      # TestNG suite definition
+│   ├── features/                     ← Login.feature (@Smoke), Authentication.feature (draft)
+│   ├── schemas/                      ← JSON Schemas for pay stubs and insurance benefits
+│   └── testdata/StateTaxMatrix.xlsx
+├── performance/PayrollClockOutLoadTest.jmx
+├── testng.xml
+├── TEST_STRATEGY.md
 └── pom.xml
 ```
 
 ---
 
-## Running the Suite
+## 🧹 Maintenance Log
 
-```bash
-# JUnit 5 unit tests only (fast, isolated business logic)
-mvn clean test
-
-# Everything: unit tests + full TestNG suite (UI, API, Integration, E2E, Cucumber)
-mvn clean verify
-```
-
-> `mvn test` and `mvn verify` are intentionally split. JUnit 5 and TestNG both live on the test classpath, so unit tests run under Surefire (`mvn test`) while the TestNG suite runs under Failsafe (`mvn verify`), avoiding a test-provider conflict between the two frameworks.
-
-### Viewing the Allure report
-
-```bash
-mvn clean verify        # populates target/allure-results
-mvn allure:serve        # opens the report in your browser
-# or, for a static copy:
-mvn allure:report        # target/site/allure-maven-plugin/index.html
-```
+| Change | Why |
+|---|---|
+| Added `.github/workflows/ci.yml` | The old README showed a CI badge for a placeholder repository (`your-github-username/hrm-payroll-automation`) and a workflow that did not exist |
+| Removed 5 empty (0-byte) source files and an empty `cucumber.properties` | `LoginPage`, `PimAddEmployeePage`, `LeaveApplyPage`, `PimEmployeeValidationTest` and `LeaveApplicationTest` reached GitHub empty |
+| `testng.xml` no longer lists the PIM / Leave classes | Listing empty classes would make `mvn verify` fail |
+| Raw `allure-results/` removed; `.gitignore` added | Build output, regenerated on every run |
 
 ---
 
-## CI/CD
+## 📌 Known Limitations
 
-Every push and pull request to `main` runs the full suite via GitHub Actions (`.github/workflows/ci.yml`): unit tests, the TestNG suite (headless Chrome in CI), and an Allure report published as a build artifact.
+- **PIM and Leave UI tests are not in the repository.** [TEST_STRATEGY.md](TEST_STRATEGY.md) describes them (including the Leave-entitlement fix), but their source was committed as empty files. Re-committing them from the original machine would restore that coverage.
+- **Mobile** and **load** are templates — there is no real mobile app or staging server yet; both stay out of `mvn verify`.
+- `tests/TimeClockNegativeTest` is tagged `Flaky` and excluded; the same rule is covered in `unit/WorkHoursValidatorTest`.
+- `Authentication.feature` is a draft without step definitions; the runner only picks up `@Smoke`.
 
 ---
 
-## Known Limitations
+## 📈 Roadmap
 
-- **Mobile Automation** and **Load & Performance** are templates, not live tests - there's no real mobile app or staging server to run them against yet. Both are clearly marked and excluded from `mvn verify` so they don't affect build status.
-- `tests/TimeClockNegativeTest.java` (Selenium against a time-clock UI) is tagged `Flaky` and excluded for the same reason - the equivalent business rule is covered for real in `unit/WorkHoursValidatorTest.java` instead.
+- [x] GitHub Actions running `mvn verify` with Allure artifacts
+- [ ] Re-commit the PIM / Leave page objects and tests
+- [ ] Step definitions for `Authentication.feature`
+- [ ] Publish the Allure report to GitHub Pages
+- [ ] Run the JMeter plan against a staging stub in a nightly job
+
+---
+
+## 🔗 Related Projects
+
+| Project | Stack |
+|---|---|
+| ⭐ [RbcTcsWorld E-Commerce Suite](https://github.com/rbchy/RbcTcsWorld_ECommerceSuite) | Spring Boot · REST Assured · mutation testing · CI quality gates |
+| 🧪 [ClinTrial-Connect](https://github.com/rbchy/RbcTcsWorld_ClinTrial-Connect) | Spring Boot · JUnit 5 · Cucumber · JMeter |
+| 💼 [Payroll Management System](https://github.com/rbchy/PayrollManagementSystem) | Java Swing · MySQL · JDBC |
+| 🏥 [OpenEMR Healthcare](https://github.com/rbchy/OpenEMR_Automation) | Java · Selenium · Cucumber · TestNG — CI green |
+
+<sub>All projects: [github.com/rbchy](https://github.com/rbchy)</sub>
+
+---
+
+## 👤 Author
+
+<div align="center">
+
+**Ranajit Baran Chowdhury (RB Chowdhury)**
+QA Automation Engineer / SDET · West Norriton, Pennsylvania, USA
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rbchy/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rbchy)
+[![Website](https://img.shields.io/badge/Website-rbchy.github.io%2Frbchy-0d9488?style=for-the-badge&logo=githubpages&logoColor=white)](https://rbchy.github.io/rbchy/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Website-blueviolet?style=for-the-badge&logo=wix&logoColor=white)](https://rbc6543.wixsite.com/rbc-portfolio)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chyranajit@gmail.com)
+
+<sub>The OrangeHRM demo is a public, shared instance; the payroll backend is stubbed and contains no real employee data.</sub>
+
+⭐ *If this framework helps you, a star on the repo is appreciated.*
+
+</div>
